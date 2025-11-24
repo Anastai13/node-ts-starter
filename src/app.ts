@@ -2,6 +2,7 @@ import express from 'express';
 import { config } from 'dotenv';
 import healthRouter from './routes/health.router';
 import todosRouter from './routes/todos.router';
+import categoriesRouter from './routes/categories.router';
 config(); // читает .env
 export function buildApp() {
  const app = express();
@@ -9,6 +10,7 @@ export function buildApp() {
  // Роуты
  app.use('/health', healthRouter);
  app.use('/api/todos', todosRouter);
+ app.use('/api/categories', categoriesRouter);
  // 404
  app.use((req, res) => res.status(404).json({ error: 'Not Found' }));
  // Ошибки
